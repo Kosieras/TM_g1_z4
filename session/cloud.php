@@ -25,10 +25,10 @@ else{
   .imgDel {
    max-width:25px; 
   }
-  img {
+  label > img {
     max-width:50px;
   }
-  audio,video {
+  img,audio,video {
   width:100%;
     max-width:250px;
   }
@@ -104,7 +104,7 @@ input[type=submit]:hover {
   <br>
     <label for="refresh">
      <img src="./icons/refresh.png"/>
-    <button id="refresh" name="refresh" onClick="window.location.reload();"></button>
+    <button id="refresh" name="refresh" onClick="window.location.reload();" style="display:none"></button>
       </label>
   <br>
    
@@ -152,11 +152,11 @@ input[type=submit]:hover {
 	$files = array_diff(scandir($dir), array('.', '..'));
   	foreach ($files as $value) {
     //Sprawdza typ plikow, aby w odpowiedni sposob je wyswietlic
-    if(is_dir("../users/$userSession/$value")) print "<TR><TD> <img src='./icons/folder.png'/></TD><TD> <a href='cloud.php?dir=$value'>$value</a>";
-    else if(end(explode(".",$value)) =="png" || end(explode(".",$value)) =="jpg" || end(explode(".",$value)) =="jpeg" || end(explode(".",$value)) =="gif") print "<TR><TD><img src='$dir/$value'/></TD><TD><a href='$dir/$value' download>$value</a>";
+    if(is_dir("../users/$userSession/$value")) print "<TR><TD> <img src='./icons/folder.png' style='max-width:50px'></TD><TD> <a href='cloud.php?dir=$value'>$value</a>";
+    else if(end(explode(".",$value)) =="png" || end(explode(".",$value)) =="jpg" || end(explode(".",$value)) =="jpeg" || end(explode(".",$value)) =="gif") print "<TR><TD><img src='$dir/$value'></TD><TD><a href='$dir/$value' download>$value</a>";
     else if(end(explode(".",$value)) =="mp3") print "<TR><TD> <audio controls src='$dir/$value'><a href='$dir/$value'>Download audio</a></audio></TD><TD><a href='$dir/$value' download>$value</a>";
     else if(end(explode(".",$value)) =="mp4") print "<TR><TD> <video controls src='$dir/$value'></video></TD><TD><a href='$dir/$value' download>$value</a>";
-    else print "<TR><TD><img src='./icons/file.png'/></TD><TD><a href='$dir/$value' download>$value</a>";
+    else print "<TR><TD><img src='./icons/file.png' style='max-width:50px'></TD><TD><a href='$dir/$value' download>$value</a>";
      //Ikona usuwania pliku/folderu
     print "<label for='$value'>
 	<form method='POST' action='cloud.php?delete=$value' enctype='multipart/form-data'>
